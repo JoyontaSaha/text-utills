@@ -16,9 +16,9 @@ export default function TextForm(props) {
     setText("");
   };
 
-  const handleSpacesClick = () => {
-    console.log("handleSpacesClick");
-    setText(text.trim());
+  const handleExtraSpacesClick = () => {
+    console.log("handleExtraSpacesClick");
+    setText(text.split(/[ ]+/).join(""));
   };
 
   const handleOnChange = (event) => {
@@ -44,11 +44,12 @@ export default function TextForm(props) {
   const [text, setText] = useState("");
 
   return (
-    <>
+    <div style={{color: props.mode === "light" ? "black" : "white"}}>
       <div className="container">
         <h1>{props.heading}</h1>
         <div className="mb-3">
           <textarea
+            style={{background: props.mode === "light" ? "white" : "grey", color: props.mode === "light" ? "black" : "white"}}
             className="form-control"
             value={text}
             onChange={handleOnChange}
@@ -62,14 +63,14 @@ export default function TextForm(props) {
         <button className="btn btn-primary mx-1" onClick={handleLoClick}>
           Convert To Lower Case
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleClearClick}>
-          Clear
-        </button>
-        <button className="btn btn-primary mx-1" onClick={handleSpacesClick}>
+        <button className="btn btn-primary mx-1" onClick={handleExtraSpacesClick}>
           Trim Spaces
         </button>
         <button className="btn btn-primary mx-1" onClick={handleCopyTextClick}>
           Copy Text
+        </button>
+        <button className="btn btn-danger mx-1" onClick={handleClearClick}>
+          Clear
         </button>
       </div>
 
@@ -80,8 +81,8 @@ export default function TextForm(props) {
         </p>
         <p>{Math.ceil(0.008 * text.split(" ").length)} mins read</p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>{text.length > 1 ? text : 'Enter Something To Preview'}</p>
       </div>
-    </>
+    </div>
   );
 }
