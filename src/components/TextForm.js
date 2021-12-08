@@ -1,29 +1,29 @@
 import React, { useState } from "react";
 
+
 export default function TextForm(props) {
   const handleUpClick = () => {
     console.log("handleUpClick");
     setText(text.toUpperCase());
+    props.showAlert("Converted to Upper case", "success");
   };
 
   const handleLoClick = () => {
     console.log("handleLoClick");
     setText(text.toLowerCase());
+    props.showAlert("Converted to Lower case", "success");
   };
 
   const handleClearClick = () => {
     console.log("handleClearClick");
     setText("");
+    props.showAlert("Cleared Text", "success");
   };
 
   const handleExtraSpacesClick = () => {
     console.log("handleExtraSpacesClick");
     setText(text.split(/[ ]+/).join(""));
-  };
-
-  const handleOnChange = (event) => {
-    console.log("handleOnChange");
-    setText(event.target.value);
+    props.showAlert("Erased Extra Spaces", "success");
   };
 
   const handleCopyTextClick = (event) => {
@@ -38,7 +38,12 @@ export default function TextForm(props) {
     navigator.clipboard.writeText(copyText.value);
 
     /* Alert the copied text */
-    alert("Copied the text: " + copyText.value);
+    props.showAlert("Copied to Clipboard", "success");
+  };
+
+  const handleOnChange = (event) => {
+    console.log("handleOnChange");
+    setText(event.target.value);
   };
 
   const [text, setText] = useState("");
