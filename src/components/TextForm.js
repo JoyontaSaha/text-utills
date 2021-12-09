@@ -2,6 +2,19 @@ import React, { useState } from "react";
 
 
 export default function TextForm(props) {
+
+  const wordCounter = (word) =>{
+    console.log("wordCounter");
+    const wordArray = word.split(' ');
+    let count = 0;   
+    for(let i = 0; i < wordArray.length; i++ ) {
+      if(wordArray[i] !== '') {
+          count++;
+      }
+    }
+    return count;
+  }
+
   const handleUpClick = () => {
     console.log("handleUpClick");
     setText(text.toUpperCase());
@@ -82,7 +95,7 @@ export default function TextForm(props) {
       <div className="container">
         <h1>Your Text Summary</h1>
         <p>
-          {text.split(" ").length} words, {text.length} characters
+          {wordCounter(text)} words, {text.length} characters
         </p>
         <p>{Math.ceil(0.008 * text.split(" ").length)} mins read</p>
         <h2>Preview</h2>
