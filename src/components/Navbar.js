@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Switch from "./Switch";
 
 export default function Navbar(props) {
   return (
@@ -24,7 +25,8 @@ export default function Navbar(props) {
                 </a>
               </li>
             </ul>
-            <div
+            <Switch mode={props.mode} toggleMode={props.toggleMode} />
+            {/* <div
               className={`form-check form-switch text-${
                 props.mode === "light" ? "dark" : "light"
               }`}
@@ -44,7 +46,7 @@ export default function Navbar(props) {
                   ? "Enable Dark Mode"
                   : "Disable Dark Mode"}
               </label>
-            </div>
+            </div> */}
           </div>
         </div>
       </nav>
