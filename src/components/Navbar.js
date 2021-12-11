@@ -3,6 +3,19 @@ import PropTypes from "prop-types";
 import Switch from "./Switch";
 
 export default function Navbar(props) {
+  
+  const divColorPlateStyle = {
+    margin: "0px 10px"
+  };
+
+  const colorPlateStyle = {
+    height: "30px",
+    width: "30px",
+    borderRadius: "50%",
+    margin: "0px 5px",
+    border: "2px",
+  };
+
   return (
     <div>
       <nav
@@ -25,6 +38,47 @@ export default function Navbar(props) {
                 </a>
               </li>
             </ul>
+            {/* dynamic color buttons */}
+            <div style={divColorPlateStyle}>
+              <button
+                onClick={() => props.colorDisplayModeChanger("primary")}
+                type="button"
+                className="btn btn-primary button button5"
+                style={colorPlateStyle}
+              />
+
+              <button
+                onClick={() => props.colorDisplayModeChanger("secondary")}
+                type="button"
+                className="btn btn-secondary"
+                style={colorPlateStyle}
+              />
+              <button
+                onClick={() => props.colorDisplayModeChanger("success")}
+                type="button"
+                className="btn btn-success"
+                style={colorPlateStyle}
+              />
+              <button
+                onClick={() => props.colorDisplayModeChanger("danger")}
+                type="button"
+                className="btn btn-danger"
+                style={colorPlateStyle}
+              />
+              <button
+                onClick={() => props.colorDisplayModeChanger("warning")}
+                type="button"
+                className="btn btn-warning"
+                style={colorPlateStyle}
+              />
+              <button
+                onClick={() => props.colorDisplayModeChanger("info")}
+                type="button"
+                className="btn btn-info"
+                style={colorPlateStyle}
+              />
+            </div>
+            {/* end */}
             <Switch mode={props.mode} toggleMode={props.toggleMode} />
             {/* <div
               className={`form-check form-switch text-${
