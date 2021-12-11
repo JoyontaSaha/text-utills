@@ -16,7 +16,7 @@ function App() {
     });
     setTimeout(function () {
       setAlert(null);
-    }, 2000);
+    }, 500);
   };
 
   const colorDisplayModeChanger = (colorDisplayMode) => {
@@ -25,27 +25,21 @@ function App() {
     switch (colorDisplayMode) {
       case "primary":
         document.body.style.backgroundColor = "#0d6efd";
-        // showAlert("Primary mode enabled", "success");
         break;
       case "secondary":
         document.body.style.backgroundColor = "#6c757d";
-        // showAlert("Secondary mode enabled", "success");
         break;
       case "success":
         document.body.style.backgroundColor = "#198754";
-        // showAlert("Success mode enabled", "success");
         break;
       case "danger":
-        document.body.style.backgroundColor = "#dc3545;";
-        // showAlert("Danger mode enabled", "success");
+        document.body.style.backgroundColor = "#dc3545";
         break;
       case "warning":
         document.body.style.backgroundColor = "#ffc107";
-        // showAlert("Warning mode enabled", "success");
         break;
       case "info":
         document.body.style.backgroundColor = "#0dcaf0";
-        // showAlert("Info mode enabled", "success");
         break;
     }
     setMode(colorDisplayMode);
@@ -57,10 +51,12 @@ function App() {
     if (mode === "light") {
       setMode("dark");
       document.body.style.backgroundColor = "#111222";
+      document.title ="TextUtils - Light";
       showAlert("Dark mode enabled", "success");
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
+      document.title ="TextUtils - Dark"
       showAlert("Light mode enabled", "success");
     }
   };
